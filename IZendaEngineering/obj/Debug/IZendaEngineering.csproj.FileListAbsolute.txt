@@ -13,6 +13,6 @@ C:\IZenda\IZendaEngineering\IZendaEngineering\obj\Debug\IZendaEngineering.pdb
 C:\IZenda\IZendaEngineering\bin\IZendaEngineering.dll.config
 C:\IZenda\IZendaEngineering\bin\IZendaEngineering.dll
 C:\IZenda\IZendaEngineering\bin\IZendaEngineering.pdb
-C:\IZenda\IZendaEngineering\obj\Debug\IZendaEngineering.csprojResolveAssemblyReference.cache
 C:\IZenda\IZendaEngineering\obj\Debug\IZendaEngineering.dll
 C:\IZenda\IZendaEngineering\obj\Debug\IZendaEngineering.pdb
+C:\IZenda\IZendaEngineering\obj\Debug\IZendaEngineering.csprojResolveAssemblyReference.cache

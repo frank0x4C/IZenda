@@ -20,50 +20,64 @@
     <div class="container-fluid">
         <div class="jumbotron">
             <div class="row">
-                <h1>Patient Display Grid</h1>
+                <div class="col-md-10 col-md-offset-1">
+                    <h1 style="padding:20px;">Patient Display Table</h1>
+                </div>
             </div>
         </div>
     </div>
 
-    
-            <div class="row">
-                <div class="col-md-11">
-                    <div class=" panel panel-primary">
-                        <div class=" table-responsive">
-                            <div class="panel-body">
-                                <table id="patientTable" class="table table-bordered table-condensed table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Edit</th>
-                                            <th>Id</th>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
-                                            <th>Street Address</th>
-                                            <th>State</th>
-                                            <th>Prescription</th>
-                                            <th>Email</th>
-                                            <th>Gender</th>
-                                            <th data-id="id">Delete</th>
-                                        </tr>
-                                    </thead>
-                                </table>
-                            </div>
-                        </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class=" panel panel-primary">
+                    <div class="table-responsive">
+                        <table id="patientTable" class="table table-bordered table-striped table-responsive table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Edit</th>
+                                    <th>Id</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Street Address</th>
+                                    <th>State</th>
+                                    <th>Prescription</th>
+                                    <th>Email</th>
+                                    <th>Gender</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                        </table>
                     </div>
                 </div>
             </div>
-    
-
+        </div>
+    </div>
 
     <br>
+
     <input type="hidden" id="patientId" value="=0" />
-    <div class="btn-group btn-group-lg">
-        <button id="showToggleButton" class="btn btn-primary btn-block" onclick="showForm();">Show Add Form</button>
-        <button id="hideToggleButton" class="btn btn-primary btn-block" onclick="hideForm();">Hide Add Form</button>
-    </div>
-        <br>
+
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="btn-group btn-group-justified">
+                    <div class="btn-group">
+                        <button id="showToggleButton" class="btn btn-primary active" onclick="showForm();">Show Add Form</button>
+                    </div>
+                    <div class="btn-group">
+                        <button id="hideToggleButton" class="btn btn-primary active" style="color:black;" onclick="hideForm();">Hide Add Form</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
 
                 <div class="panel panel-primary" id="collapseAddForm">
                     <div class="panel-heading">
@@ -115,11 +129,14 @@
 
                     <div class="panel-footer">
                         <div class="row">
-                            <div class="col-sm-6">
-                                <div class="btn-group btn-group-lg">
-                                    <button type="button" id="addButton" class="btn btn-primary" onclick="addClick();">Add</button>
-                                    <button type="button" class="btn btn-primary" onclick="formClear();">Cancel</button>
-
+                            <div class="col-md-8 col-md-offset-2">
+                                <div class="btn-group btn-group-justified">
+                                    <div class="btn-group">
+                                        <button type="button" id="addButton" class="btn btn-primary" onclick="addClick();">Add</button>
+                                    </div>
+                                    <div class="btn-group">
+                                        <button type="button" id="clearButton" class="btn btn-primary" onclick="formClear();">Cancel</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -129,295 +146,289 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <script>
+    <script>
 
-            function patientList() {
-                $.ajax({
-                    url: 'https://izenda.herokuapp.com/patients',
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function (patients) {
-                        patientListSuccess(patients);
-                    },
-                    error: function (request, message, error) {
-                        handleException(request, message, error);
-                    }
-                });
-            }
+        function patientList() {
+            $.ajax({
+                url: 'https://izenda.herokuapp.com/patients',
+                type: 'GET',
+                dataType: 'json',
+                success: function (patients) {
+                    patientListSuccess(patients);
+                },
+                error: function (request, message, error) {
+                    handleException(request, message, error);
+                }
+            });
+        }
 
-            function addNewPatient(patient) {
-                $.ajax({
-                    url: 'https://izenda.herokuapp.com/patients',
-                    type: 'POST',
-                    contentType:
-                       "application/json;charset=utf-8",
-                    data: JSON.stringify(patient),
-                    success: function (patient) {
-                        patientAddSuccess(patient);
-                    },
-                    error: function (request, message, error) {
-                        handleException(request, message, error);
-                    }
-                });
-            }
+        function addNewPatient(patient) {
+            $.ajax({
+                url: 'https://izenda.herokuapp.com/patients',
+                type: 'POST',
+                contentType:
+                   "application/json;charset=utf-8",
+                data: JSON.stringify(patient),
+                success: function (patient) {
+                    patientAddSuccess(patient);
+                },
+                error: function (request, message, error) {
+                    handleException(request, message, error);
+                }
+            });
+        }
 
-            function getEditPatientRow(ctl) {
+        function getEditPatientRow(ctl) {
 
-                var id = $(ctl).data("id");
+            var id = $(ctl).data("id");
 
-                $("#patientId").val(id);
+            $("#patientId").val(id);
 
-                $.ajax({
-                    url: 'https://izenda.herokuapp.com/patients/' + id,
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function (patient) {
+            $.ajax({
+                url: 'https://izenda.herokuapp.com/patients/' + id,
+                type: 'GET',
+                dataType: 'json',
+                success: function (patient) {
 
-                        patientToFields(patient);
-
-
-                    },
-                    error: function (request, message, error) {
-                        handleException(request, message, error);
-                    }
-                });
-            }
-
-            function editSelectedPatient(patient) {
-                $.ajax({
-                    url: 'https://izenda.herokuapp.com/patients',
-                    type: 'POST',
-                    contentType:
-                       "application/json;charset=utf-8",
-                    data: JSON.stringify(patient),
-                    success: function (patient) {
-                        editPatientSuccess(patient);
-                    },
-                    error: function (request, message, error) {
-                        handleException(request, message, error);
-                    }
-                });
-            }
-
-            function deletePatient(ctl) {
-                var id = $(ctl).data("id");
-                $.ajax({
-                    url: 'https://izenda.herokuapp.com/patients/' + id,
-                    type: 'DELETE',
-                    dataType: 'json',
-                    success: function (patient) {
-                        $(ctl).parents("tr").remove();
-                    },
-                    error: function (request, message, error) {
-                        handleException(request, message, error);
-                    }
-                });
-            }
+                    patientToFields(patient);
 
 
-            //****************************************
-            function patientAddSuccess(patient) {
+                },
+                error: function (request, message, error) {
+                    handleException(request, message, error);
+                }
+            });
+        }
+
+        function updateSelectedPatient(patient) {
+            $.ajax({
+                url: 'https://izenda.herokuapp.com/patients',
+                type: 'POST',
+                contentType:
+                   "application/json;charset=utf-8",
+                data: JSON.stringify(patient),
+                success: function (patient) {
+                    updatePatientSuccess(patient);
+                },
+                error: function (request, message, error) {
+                    handleException(request, message, error);
+                }
+            });
+        }
+
+        function deletePatient(ctl) {
+            var id = $(ctl).data("id");
+            $.ajax({
+                url: 'https://izenda.herokuapp.com/patients/' + id,
+                type: 'DELETE',
+                dataType: 'json',
+                success: function (patient) {
+                    $(ctl).parents("tr").remove();
+                },
+                error: function (request, message, error) {
+                    handleException(request, message, error);
+                }
+            });
+        }
+
+        function patientListSuccess(patients) {
+            $.each(patients, function (index, patient) {
                 patientAddRow(patient);
-                formClear();
-            }
-
-            function editPatientSuccess(patient) {
-                patientList();
-                formClear();
-                $("#addButton").text("Add");
-            }
-
-            function patientListSuccess(patients) {
-                // Iterate over the collection of data
-                $.each(patients, function (index, patient) {
-                    // Add a row to the Patient table
-                    patientAddRow(patient);
-                });
-            }
-
-            function patientAddRow(patient) {
-                // Check if <tbody> tag exists, add one if not
-                if ($("#patientTable tbody").length == 0) {
-                    $("#patientTable").append("<tbody></tbody>");
-                }
-                // Append row to <table>
-                $("#patientTable tbody").append(
-                  patientBuildTableRow(patient));
-            }
-
-            function patientBuildTableRow(patient) {
-                var ret =
-                "<tr>" +
-                "<td>" +
-                "<button type='button' " +
-                "onclick='getEditPatientRow(this);' " +
-                "class='btn btn-default' " +
-                "data-id='" + patient.id + "'>" +
-                "<span class='glyphicon glyphicon-edit' />" +
-                "</button>" +
-                "</td>" +
-
-                "<td>" + patient.id + "</td>" +
-                "<td>" + patient.first_name + "</td>" +
-                "<td>" + patient.last_name + "</td>" +
-                "<td>" + patient.street_address + "</td>" +
-                "<td>" + patient.state + "</td>" +
-                "<td>" + patient.drug + "</td>" +
-                "<td>" + patient.email + "</td>" +
-                "<td>" + patient.gender + "</td>" +
-                "<td>" +
-                "<button type='button' " +
-                "onclick='deletePatient(this);' " +
-                "class='btn btn-default' " +
-                "data-id='" + patient.id + "'>" +
-                "<span class='glyphicon glyphicon-remove' />" +
-                "</button>" +
-                "</td>" +
-                "</tr>"
-
-                return ret;
-            }
-
-            function handleException(request, message,
-                                     error) {
-                var msg = "";
-                msg += "Code: " + request.status + "\n";
-                msg += "Text: " + request.statusText + "\n";
-                if (request.responseJSON != null) {
-                    msg += "Message" +
-                        request.responseJSON.Message + "\n";
-                }
-                alert(msg);
-            }
-
-            function patientToFields(patient) {
-                $("#first_name").val(patient.first_name);
-                $("#last_name").val(patient.last_name);
-                $("#street_address").val(patient.street_address);
-                $("#state").val(patient.state);
-                $("#drug").val(patient.drug);
-                $("#email").val(patient.email);
-                $("#gender").val(patient.gender);
-
-                $("#addButton").text("Update");
-                showForm();
-            }
-
-            
-            function addClick(ctl) {
-                if ($("#addButton").text().trim() == "Add") {
-                    addPatient(Patient);
-                }
-                else {
-                    editPatient(Patient);
-                }
-            }
-
-            var Patient = {
-                id: 0,
-                first_name: "",
-                last_name: "",
-                street_address: "",
-                state: "",
-                drug: "",
-                email: "",
-                gender: ""
-            }
-
-            function editPatient() {
-                Patient = new Object();
-                Patient.id = $("#patientId").val();
-                Patient.first_name = $("#first_name").val();
-                Patient.last_name = $("#last_name").val();
-                Patient.street_address = $("#street_address").val();
-                Patient.state = $("#state").val();
-                Patient.drug = $("#drug").val();
-                Patient.email = $("#email").val();
-                Patient.gender = $("#gender").val();
-
-                editSelectedPatient(Patient);
-
-            }
-
-
-            function addPatient() {
-                Patient = new Object();
-
-                Patient.first_name = $("#first_name").val();
-                Patient.last_name = $("#last_name").val();
-                Patient.street_address = $("#street_address").val();
-                Patient.state = $("#state").val();
-                Patient.drug = $("#drug").val();
-                Patient.email = $("#email").val();
-                Patient.gender = $("#gender").val();
-
-                addNewPatient(Patient);
-
-            }
-
-            function formClear() {
-                $("#first_name").val("");
-                $("#last_name").val("");
-                $("#street_address").val("");
-                $("#state").val("");
-                $("#drug").val("");
-                $("#email").val("");
-                $("#gender").val("");
-                $("#addButton").text("Add");
-            }
-
-
-            function showForm() {
-                $("#collapseAddForm").collapse('show');
-                $("#showToggleButton").click(function () {
-                    $('html, body').animate({
-                        scrollTop: $("#collapseAddForm").offset().top
-                    }, 1000);
-                });
-                $("#collapseAddForm").focus();
-            }
-
-
-            function hideForm() {
-                $("#collapseAddForm").collapse('hide');
-
-                $("#patientTable").focus(); $("#hideToggleButton").click(function () {
-                    $('html, body').animate({
-                        scrollTop: $("#patientTable").offset().top
-                    }, 1000);
-                });
-                //$("#patientTable").focus();
-            }
-                       
-
-            $(document).ready(function () {
-
-                hideForm();
             });
+        }
 
-            $(document).ready(function () {
+        function patientAddSuccess(patient) {
+            patientAddRow(patient);
+            formClear();
+        }
 
-                //hideForm();
-                patientList();
-               
+        function updatePatientSuccess(patient) {
+            patientList();
+            formClear();
+            $("#addButton").text("Add");
+        }
+
+        function patientAddRow(patient) {
+            if ($("#patientTable tbody").length == 0) {
+                $("#patientTable").append("<tbody></tbody>");
+            }
+
+            $("#patientTable tbody").append(
+              patientBuildTableRow(patient));
+        }
+
+        function patientBuildTableRow(patient) {
+            var ret =
+            "<tr>" +
+            "<td>" +
+            "<button type='button' " +
+            "onclick='getEditPatientRow(this);' " +
+            "class='btn btn-default' " +
+            "data-id='" + patient.id + "'>" +
+            "<span class='glyphicon glyphicon-edit' />" +
+            "</button>" +
+            "</td>" +
+
+            "<td>" + patient.id + "</td>" +
+            "<td>" + patient.first_name + "</td>" +
+            "<td>" + patient.last_name + "</td>" +
+            "<td>" + patient.street_address + "</td>" +
+            "<td>" + patient.state + "</td>" +
+            "<td>" + patient.drug + "</td>" +
+            "<td>" + patient.email + "</td>" +
+            "<td>" + patient.gender + "</td>" +
+            "<td>" +
+            "<button type='button' " +
+            "onclick='deletePatient(this);' " +
+            "class='btn btn-default' " +
+            "data-id='" + patient.id + "'>" +
+            "<span class='glyphicon glyphicon-remove' />" +
+            "</button>" +
+            "</td>" +
+            "</tr>"
+
+            return ret;
+        }
+
+        function handleException(request, message,
+                                 error) {
+            var msg = "";
+            msg += "Code: " + request.status + "\n";
+            msg += "Text: " + request.statusText + "\n";
+            if (request.responseJSON != null) {
+                msg += "Message" +
+                    request.responseJSON.Message + "\n";
+            }
+            alert(msg);
+        }
+
+        function patientToFields(patient) {
+            $("#first_name").val(patient.first_name);
+            $("#last_name").val(patient.last_name);
+            $("#street_address").val(patient.street_address);
+            $("#state").val(patient.state);
+            $("#drug").val(patient.drug);
+            $("#email").val(patient.email);
+            $("#gender").val(patient.gender);
+
+            $("#addButton").text("Update");
+            showForm();
+        }
+
+
+        function addClick(ctl) {
+            if ($("#addButton").text().trim() == "Add") {
+                addPatient(Patient);
+            }
+            else {
+                editPatient(Patient);
+            }
+        }
+
+        var Patient = {
+            id: 0,
+            first_name: "",
+            last_name: "",
+            street_address: "",
+            state: "",
+            drug: "",
+            email: "",
+            gender: ""
+        }
+
+        function editPatient() {
+            Patient = new Object();
+            Patient.id = $("#patientId").val();
+            Patient.first_name = $("#first_name").val();
+            Patient.last_name = $("#last_name").val();
+            Patient.street_address = $("#street_address").val();
+            Patient.state = $("#state").val();
+            Patient.drug = $("#drug").val();
+            Patient.email = $("#email").val();
+            Patient.gender = $("#gender").val();
+
+            updateSelectedPatient(Patient);
+
+        }
+
+
+        function addPatient() {
+            Patient = new Object();
+
+            Patient.first_name = $("#first_name").val();
+            Patient.last_name = $("#last_name").val();
+            Patient.street_address = $("#street_address").val();
+            Patient.state = $("#state").val();
+            Patient.drug = $("#drug").val();
+            Patient.email = $("#email").val();
+            Patient.gender = $("#gender").val();
+
+            addNewPatient(Patient);
+
+        }
+
+        function formClear() {
+            $("#first_name").val("");
+            $("#last_name").val("");
+            $("#street_address").val("");
+            $("#state").val("");
+            $("#drug").val("");
+            $("#email").val("");
+            $("#gender").val("");
+            $("#addButton").text("Add");
+        }
+
+
+        function showForm() {
+            $("#collapseAddForm").collapse('show');
+            //$("#showToggleButton").click(function () {
+            //    $('html, body').animate({
+            //        scrollTop: $("#collapseAddForm").offset().top
+            //    }, 200);
+            //});
+            //$("#collapseAddForm").focus();
+        }
+
+
+        function hideForm() {
+            $("#collapseAddForm").collapse('hide');
+
+            //$("#patientTable").focus(); $("#hideToggleButton").click(function () {
+            //    $('html, body').animate({
+            //        scrollTop: $("#patientTable").offset().top
+            //    }, 200);
+            //});
+            //$("#patientTable").focus();
+        }
+
+
+        
+
+        $(document).ready(function () {
+
+            patientList();
+            $('#patientTable').DataTable({
+                "searching": false,
+                "scrollY": 650,
+                "paging": false,
+                "ordering": false,
+                "info": false,
+                "responsive": false
             });
+        });
 
-            $(document).ready(function () {
-                $('#patientTable').DataTable({
-                    "searching": false,
-                    "scrollY": 650,
-                    "paging": false,
-                    "ordering": false,
-                    "info": false,
-                    "responsive": true
-                });
-            });
+        //$(document).ready(function () {
            
-            
+        //});
 
-        </script>
+
+
+    </script>
 
 </body>
+
+
 
 </html>
