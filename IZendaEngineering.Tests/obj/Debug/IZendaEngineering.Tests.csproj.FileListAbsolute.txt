@@ -1,0 +1,21 @@
+C:\Users\Fahad\documents\visual studio 2013\Projects\IZendaEngineering\IZendaEngineering.Tests\bin\Debug\IZendaEngineering.Tests.dll
+C:\Users\Fahad\documents\visual studio 2013\Projects\IZendaEngineering\IZendaEngineering.Tests\bin\Debug\IZendaEngineering.Tests.pdb
+C:\Users\Fahad\documents\visual studio 2013\Projects\IZendaEngineering\IZendaEngineering.Tests\bin\Debug\IZendaEngineering.dll
+C:\Users\Fahad\documents\visual studio 2013\Projects\IZendaEngineering\IZendaEngineering.Tests\bin\Debug\IZendaEngineering.pdb
+C:\Users\Fahad\documents\visual studio 2013\Projects\IZendaEngineering\IZendaEngineering.Tests\obj\Debug\IZendaEngineering.Tests.csprojResolveAssemblyReference.cache
+C:\Users\Fahad\documents\visual studio 2013\Projects\IZendaEngineering\IZendaEngineering.Tests\obj\Debug\IZendaEngineering.Tests.dll
+C:\Users\Fahad\documents\visual studio 2013\Projects\IZendaEngineering\IZendaEngineering.Tests\obj\Debug\IZendaEngineering.Tests.pdb
+C:\IZenda\IZendaEngineering\IZendaEngineering.Tests\bin\Debug\IZendaEngineering.Tests.dll
+C:\IZenda\IZendaEngineering\IZendaEngineering.Tests\bin\Debug\IZendaEngineering.Tests.pdb
+C:\IZenda\IZendaEngineering\IZendaEngineering.Tests\bin\Debug\IZendaEngineering.dll
+C:\IZenda\IZendaEngineering\IZendaEngineering.Tests\bin\Debug\IZendaEngineering.pdb
+C:\IZenda\IZendaEngineering\IZendaEngineering.Tests\obj\Debug\IZendaEngineering.Tests.csprojResolveAssemblyReference.cache
+C:\IZenda\IZendaEngineering\IZendaEngineering.Tests\obj\Debug\IZendaEngineering.Tests.dll
+C:\IZenda\IZendaEngineering\IZendaEngineering.Tests\obj\Debug\IZendaEngineering.Tests.pdb
+C:\IZenda\IZendaEngineering.Tests\bin\Debug\IZendaEngineering.Tests.dll
+C:\IZenda\IZendaEngineering.Tests\bin\Debug\IZendaEngineering.Tests.pdb
+C:\IZenda\IZendaEngineering.Tests\bin\Debug\IZendaEngineering.dll
+C:\IZenda\IZendaEngineering.Tests\bin\Debug\IZendaEngineering.pdb
+C:\IZenda\IZendaEngineering.Tests\obj\Debug\IZendaEngineering.Tests.csprojResolveAssemblyReference.cache
+C:\IZenda\IZendaEngineering.Tests\obj\Debug\IZendaEngineering.Tests.dll
+C:\IZenda\IZendaEngineering.Tests\obj\Debug\IZendaEngineering.Tests.pdb
